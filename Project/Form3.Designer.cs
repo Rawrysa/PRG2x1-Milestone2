@@ -47,6 +47,7 @@ namespace Project
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnLogIn = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +79,7 @@ namespace Project
             this.Register.TabIndex = 11;
             this.Register.Text = "Register";
             this.Register.UseVisualStyleBackColor = true;
+            this.Register.Click += new System.EventHandler(this.Register_Click);
             // 
             // txtRegisterUsername
             // 
@@ -149,6 +151,7 @@ namespace Project
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnLogIn);
             this.groupBox1.Controls.Add(this.btnForgotPassword);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.txtUsername);
@@ -170,6 +173,7 @@ namespace Project
             this.btnForgotPassword.TabIndex = 6;
             this.btnForgotPassword.Text = "Forgot password?";
             this.btnForgotPassword.UseVisualStyleBackColor = true;
+            this.btnForgotPassword.Click += new System.EventHandler(this.btnForgotPassword_Click);
             // 
             // txtPassword
             // 
@@ -217,6 +221,17 @@ namespace Project
             this.label1.TabIndex = 9;
             this.label1.Text = "LOG IN/ REGISTER";
             // 
+            // btnLogIn
+            // 
+            this.btnLogIn.Font = new System.Drawing.Font("Modern No. 20", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnLogIn.Location = new System.Drawing.Point(20, 203);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(114, 65);
+            this.btnLogIn.TabIndex = 7;
+            this.btnLogIn.Text = "Log in";
+            this.btnLogIn.UseVisualStyleBackColor = true;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,5 +271,6 @@ namespace Project
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnLogIn;
     }
 }
