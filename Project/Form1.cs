@@ -15,6 +15,47 @@ namespace Project
         public Form1()
         {
             InitializeComponent();
+
+            Text = "Student Form";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new DataHandler().InsertStudent(Convert.ToInt32(textBox1.Text),textBox2.Text,textBox3.Text,textBox4.Text,textBox5.Text,textBox6.Text,textBox7.Text,textBox8.Text,textBox9.Text,(string)comboBox1.SelectedItem);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            new DataHandler().DeleteStudent(Convert.ToInt32(textBox1.Text));
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            new DataHandler().UpdateStudent(Convert.ToInt32(textBox1.Text), textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text, textBox8.Text, textBox9.Text, (string)comboBox1.SelectedItem);
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Form4 form4 = new Form4(new DataHandler().SearchStudent(Convert.ToInt32(textBox1.Text)));
+
+            this.Hide();
+            form4.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form4 form4 = new Form4(new DataHandler().GetStudents());
+
+            this.Hide();
+            form4.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form4 form4 = new Form4(new DataHandler().GetCourses());
+
+            this.Hide();
+            form4.Show();
         }
     }
 }

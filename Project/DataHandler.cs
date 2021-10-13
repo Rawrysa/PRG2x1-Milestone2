@@ -26,35 +26,24 @@ namespace Project
             }
         }
 
-        public void GetStudents(DataGridView data)
+        public DataTable GetStudents()
         {
-            try
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter("spDisplayStudents", connection);
-                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                DataTable tb = new DataTable();
-                adapter.Fill(tb);
-                data.DataSource = tb;
-            }
-            catch
-            {
-            }
+            SqlDataAdapter adapter = new SqlDataAdapter("spDisplayStudents", connection);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable tb = new DataTable();
+            adapter.Fill(tb);
 
+            return tb;
         }
 
-        public void GetCourses(DataGridView data)
+        public DataTable GetCourses()
         {
-            try
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter("spDisplayCourse", connection);
-                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                DataTable tb = new DataTable();
-                adapter.Fill(tb);
-                data.DataSource = tb;
-            }
-            catch
-            {
-            }
+            SqlDataAdapter adapter = new SqlDataAdapter("spDisplayCourse", connection);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable tb = new DataTable();
+            adapter.Fill(tb);
+
+            return tb;
 
         }
 
@@ -147,8 +136,10 @@ namespace Project
             }
         }
 
-        public void SearchCourse(DataGridView data,string cid)
+        public DataTable SearchCourse(string cid)
         {
+            DataTable bt = null;
+
             try
             {
                 connection.Open();
@@ -158,7 +149,7 @@ namespace Project
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable tb = new DataTable();
                 tb.Load(reader);
-                data.DataSource = tb;
+                bt = tb;
 
                 if (tb.Rows.Count == 0)
                 {
@@ -169,10 +160,14 @@ namespace Project
             {
                 MessageBox.Show($"Search was unsuccessful");
             }
+
+            return bt;
         }
 
-        public void SearchStudent(DataGridView data, int sid)
+        public DataTable SearchStudent( int sid)
         {
+            DataTable bt = null;
+
             try
             {
                 connection.Open();
@@ -182,7 +177,7 @@ namespace Project
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable tb = new DataTable();
                 tb.Load(reader);
-                data.DataSource = tb;
+                bt = tb;
 
                 if (tb.Rows.Count == 0)
                 {
@@ -193,6 +188,8 @@ namespace Project
             {
                 MessageBox.Show($"Search was unsuccessful");
             }
+
+            return bt;
         }
 
         public void UpdateCourse(string cid, string cname, string cdescription)

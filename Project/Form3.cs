@@ -16,6 +16,8 @@ namespace Project
         public Form3()
         {
             InitializeComponent();
+
+            Text = "Login/Register Form";
         }
 
         private void Register_Click(object sender, EventArgs e)
@@ -32,8 +34,6 @@ namespace Project
             writer.Write(name, ",",surname, "," , username, ",", password, ",");
             writer.Close();
             MessageBox.Show("Successful registeration","Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
         }
 
         private void btnForgotPassword_Click(object sender, EventArgs e)
@@ -86,6 +86,18 @@ namespace Project
             }
 
            
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                txtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';
+            }
         }
     }
 }
