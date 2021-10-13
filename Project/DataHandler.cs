@@ -13,19 +13,6 @@ namespace Project
     {
         private SqlConnection connection = new SqlConnection(@"Server= LAPTOP-MSQIEH6G\SQLEXPRESS; Initial Catalog= Project; Integrated Security= SSPI");
 
-        public void connect()
-        {
-            try
-            {
-                connection.Open();
-                MessageBox.Show("Connection is open");
-            }
-            catch
-            {
-                MessageBox.Show("failed");
-            }
-        }
-
         public DataTable GetStudents()
         {
             SqlDataAdapter adapter = new SqlDataAdapter("spDisplayStudents", connection);

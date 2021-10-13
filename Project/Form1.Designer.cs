@@ -170,6 +170,17 @@ namespace Project
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "PMM271",
+            "PRG271",
+            "MAT171",
+            "LPR171",
+            "STA271",
+            "CNA271",
+            "SAD371",
+            "WPR271",
+            "DBD271",
+            "INL271"});
             this.comboBox1.Location = new System.Drawing.Point(178, 195);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";

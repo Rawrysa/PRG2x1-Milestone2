@@ -13,6 +13,11 @@ namespace Project
         private StreamReader read;
         private StreamWriter write;
 
+        public void Register(string name, string surname, string username, string password)
+        {
+            File.WriteAllText("Login.txt", $"{name},{surname},{username},{password}");
+        }
+
         public List<string> ReadLogin(string filepath)
         {
             List<string> info = new List<string>();
@@ -58,17 +63,23 @@ namespace Project
 
             }
 
-        public string[] checkUser()
+        public bool checkUser(string user, string pass)
         {
-            FileStream file = new FileStream("Login.txt", FileMode.Open, FileAccess.Read);
-            StreamReader reader = new StreamReader(stream);
-            string username = reader.ReadLine();
-            string password = reader.ReadLine();
-            reader.Close();
-            string[] stored = { username, password };
-            return stored;
+            bool found = false;
+
+            foreach (var item in File.ReadAllLines("Login.txt"))
+            {
+                string[] breaker = item.Split(',');
+
+                if (user == breaker[2] && pass == breaker[3])
+                {
+                    found = true;
+                }
+            }
+
+            return found;
 
         } 
-        }
+    }
 }
 

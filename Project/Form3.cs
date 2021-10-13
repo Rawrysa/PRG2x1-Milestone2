@@ -22,18 +22,27 @@ namespace Project
 
         private void Register_Click(object sender, EventArgs e)
         {
-            string name = txtRegisterName.Text;
-            string surname = txtRegisterSurname.Text;
-            string username = txtRegisterUsername.Text;
-            string password = txtRegisterPassword.Text;
+            try
+            {
+                string name = txtRegisterName.Text;
+                string surname = txtRegisterSurname.Text;
+                string username = txtRegisterUsername.Text;
+                string password = txtRegisterPassword.Text;
 
-            Login login = new Login (name, surname, username, password);
-            FileStream fileName = new FileStream("Login.txt", FileMode.OpenOrCreate, FileAccess.Write);
-            StreamWriter writer = new StreamWriter(fileName);
+                new FileHandler().Register(name, surname, username, password);
 
-            writer.Write(name, ",",surname, "," , username, ",", password, ",");
-            writer.Close();
-            MessageBox.Show("Successful registeration","Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Successful registeration", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Registeration was unsuccessful");
+
+            }
+
+            txtRegisterName.Clear();
+            txtRegisterSurname.Clear();
+            txtRegisterUsername.Clear();
+            txtRegisterPassword.Clear();
         }
 
         private void btnForgotPassword_Click(object sender, EventArgs e)
@@ -71,21 +80,17 @@ namespace Project
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            FileHandler fh = new FileHandler();
-            string name = fh.checkUser().GetValue(0).ToString();
-            string password = fh.checkUser().GetValue(0).ToString();
-
-            string username = txtUsername.Text;
-            string pass = txtRegisterPassword.Text;
-            if (name == username && pass == password)
+            if (new FileHandler().checkUser(txtUsername.Text,txtPassword.Text))
             {
                 Form1 studentInfo = new Form1();
-                this.Close();
+                this.Hide();
                 studentInfo.Show();
-
             }
 
-           
+            else
+            {
+                MessageBox.Show("Incorrect Login Details!", "Incorrect Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
