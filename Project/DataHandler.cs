@@ -11,7 +11,7 @@ namespace Project
 {
     class DataHandler
     {
-        private SqlConnection connection = new SqlConnection(@"Server= LAPTOP-MSQIEH6G\SQLEXPRESS; Initial Catalog= Project; Integrated Security= SSPI");
+        private SqlConnection connection = new SqlConnection(@"Server= (local); Initial Catalog= Project; Integrated Security= SSPI");
 
         public DataTable GetStudents()
         {
